@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>Smart Fruit Basket</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Intro -->
+    <section class="intro">
+        <header>
+            <h1>Smart Fruit Basket</h1>
+            <p>From picture to product—automate your recipes.</p>
+            <ul class="actions">
+                <li><a href="#first1" class="arrow scrolly"><span class="label">Next</span></a></li>
+            </ul>
+        </header>
+        <div class="content">
+            <span class="image fill" data-position="center"><img src="/images/sfb.png" alt="" /></span>
+        </div>
+    </section>
+
+    <!-- Capture Section -->
+    <section id="first1">
+        <header>
+            <h2>Capture Images from Webcam</h2>
+        </header>
+        <div class="content">
+            <!-- Dropdown for camera selection -->
+            <label for="cameraSelect">Select Camera:</label>
+            <select id="cameraSelect"></select>
+            <br /><br />
+            
+            <!-- Webcam video feed -->
+            <video id="webcam" autoplay playsinline></video>
+            <br />
+            
+            <!-- Capture and Upload Buttons -->
+            <button id="captureButton" class="button">Capture Image</button>
+            <canvas id="canvas" style="display: none;"></canvas>
+            <br />
+            <button id="uploadButton" class="button primary">Upload Captured Images</button>
+            <p id="output"></p>
+        </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section id="second">
+        <header>
+            <h2>Process and Preview</h2>
+            <div id="productTableWrapper" style="display: none;">
+                <h4>Product Information</h4>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Color</th>
+                                <th>Type</th>
+                                <th>Keywords</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody">
+                            <!-- AI response will populate here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </header>
+    </section>
+
+    <!-- Copyright -->
+    <div class="copyright">&copy;<a href="https://www.linkedin.com/in/shakshat/" target="_blank"> Sharma, Akshat </a>.</div>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="webcam.js" defer></script>
+
+</body>
+</html>
