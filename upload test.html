@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <script>
+        async function uploadFiles(event) {
+            event.preventDefault();
+
+            const formData = new FormData();
+            const fileInputs = document.querySelectorAll("input[type='file']");
+            const promptInput = document.getElementById("promptInput").value;
+
+            // Append all selected files to the FormData object
+            fileInputs.forEach((input, index) => {
+                if (input.files[0]) {
+                    formData.append("file", input.files[0]);
+                }
+            });
+
+            // Append the prompt to the FormData object
+            formData.append("prompt", promptInput);
+
+            try {
+                const response = await fetch("http://13.202.188.112:5000/upload", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to upload files to the server");
+                }
+
+                const result = await response.json();
+                document.getElementById("output").innerText = `AI Response: ${result.ai_response}`;
+            } catch (error) {
+                document.getElementById("output").innerText = `Error: ${error.message}`;
+            }
+        }
+
+        function addFileInput() {
+            const fileContainer = document.getElementById("fileContainer");
+            const newInput = document.createElement("input");
+            newInput.type = "file";
+            newInput.required = true;
+            fileContainer.appendChild(newInput);
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload Files and Prompt</h1>
+    <form onsubmit="uploadFiles(event)">
+        <div id="fileContainer">
+            <input type="file" name="file" required />
+        </div>
+        <button type="button" onclick="addFileInput()">Add Another File</button>
+        <br />
+        <textarea id="promptInput" name="prompt" placeholder="Enter your prompt here..." required></textarea>
+        <br />
+        <button type="submit">Upload and Process</button>
+    </form>
+    <p id="output"></p>
+</body>
+</html>
