@@ -37,7 +37,7 @@ def upload_files():
     print(f"Files uploaded to Generative AI: {genai_files}")
 
     # Prepare the prompt and generate the content
-    prompt = request.form.get('prompt', 'You are a AI nutritionist, respond with most probable info. Also write some extra notes if applicable. 1.What fruit or edible item do you see? 2.What stage of its life is it in? 3.How many days since its unedible?, 4.what recipes can be made out of it? Describe any one.')
+    prompt = request.form.get('prompt', 'You are a AI nutritionist, respond with most probable info. Also write some extra notes if applicable. 1.What all fruit/s or edible item do you see? in what quantity? 2.What stage of its life is it in? 3.How many days since its unedible?, 4.what recipes can be made out of it alone and with all other fruits in there? Describe any one.')
     model = genai.GenerativeModel("gemini-1.5-pro")
     result = model.generate_content([prompt, *genai_files])
     ai_response = result.text

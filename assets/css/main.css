@@ -3875,4 +3875,17 @@ input, select, textarea {
 			padding: 4rem;
 		}
 
+		
 	}
+	#output {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: #333;
+		margin-top: 1em;
+	}
+	
+	#output b {
+		font-weight: bold;
+		color: #555;
+	}
+	

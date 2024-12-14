@@ -76,27 +76,52 @@ document.addEventListener("DOMContentLoaded", function () {
             output.innerText = "Please capture an image first.";
             return;
         }
-
+    
         canvas.toBlob(async (blob) => {
             const formData = new FormData();
             formData.append("file", blob, "captured_image.jpg");
-
+    
             try {
                 const response = await fetch("http://15.206.26.65:5000/upload", {
                     method: "POST",
                     body: formData,
                 });
-
+    
                 if (!response.ok) throw new Error("Failed to upload captured image.");
-
+    
                 const result = await response.json();
-                output.innerText = result.ai_response || "AI response not available.";
+    
+                if (result.ai_response) {
+                    formatAIResponse(result.ai_response); // Pass the response to a formatting function
+                } else {
+                    output.innerText = "AI response not available.";
+                }
             } catch (error) {
                 console.error("Error:", error);
                 output.innerText = `Error: ${error.message}`;
             }
         }, "image/jpeg");
     });
+
+    
+    function formatAIResponse(responseText) {
+        // Clear previous content
+        output.innerHTML = "";
+    
+        // Split the response into lines (assuming newlines separate sections)
+        const lines = responseText.split("\n");
+    
+        lines.forEach(line => {
+            // Identify bold patterns based on example: "**Some Text**"
+            const formattedLine = line.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+            
+            // Wrap each line in a paragraph for readability
+            const paragraph = document.createElement("p");
+            paragraph.innerHTML = formattedLine;
+            output.appendChild(paragraph);
+        });
+    }
+    
 
     // Handle camera selection change
     cameraSelect.addEventListener("change", () => {
