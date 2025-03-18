@@ -51,7 +51,7 @@ An intelligent fridge inventory management solution that leverages **computer vi
 ## Example Workflow
 
 - **Detected:** 2 eggs, 1/2 cup of milk, 3 tomatoes, cheese slices  
-- **Gemma Suggests:** "Tomato & Cheese Omelette"  
+- **Gemma Suggests:** "Tomato & Cheese Omelette - Along with full Recipe"
 - **Low Stock Alert:** Milk is below 1 cup, suggest reordering milk carton
 
 ---
