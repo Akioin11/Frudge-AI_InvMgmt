@@ -53,6 +53,7 @@ An intelligent fridge inventory management solution that leverages **computer vi
 - **Detected:** 2 eggs, 1/2 cup of milk, 3 tomatoes, cheese slices  
 - **Gemma Suggests:** "Tomato & Cheese Omelette - Along with full Recipe"
 - **Low Stock Alert:** Milk is below 1 cup, suggest reordering milk carton
+![image](https://github.com/user-attachments/assets/7e9536f5-6879-4dd0-8bb3-a87b0cabfc35)
 
 ---
 
