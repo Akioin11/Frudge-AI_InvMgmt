@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             captureInterval = setInterval(() => {
                 captureAndUpload();
-            }, 10000); // Capture and upload every 10 seconds
+            }, 30000); // Capture and upload every 10 seconds
         } catch (error) {
             output.innerText = `Error accessing camera: ${error.message}`;
         }
